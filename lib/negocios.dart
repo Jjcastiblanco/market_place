@@ -54,10 +54,10 @@ class _ConsultasState extends State<Consultas> {
               child: ListTile(
                 title: Text(data['nombre']),
                 subtitle: Text(data['direccion']),
-                leading: Image.network(data['foto'],width: 100,height: 100),
+                leading: Image.network(data['imagen'],width: 100,height: 100),
                 onTap: (){
                   Navigator.push(context,
-                    MaterialPageRoute(builder: (context)=> detalleNegocios(data['web']))
+                    MaterialPageRoute(builder: (context)=> detalleNegocios(data['paginaWeb']))
                   );
                 },
               ),
