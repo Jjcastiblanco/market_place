@@ -56,8 +56,9 @@ class _ConsultasState extends State<Consultas> {
                 subtitle: Text(data['direccion']),
                 leading: Image.network(data['imagen'],width: 100,height: 100),
                 onTap: (){
+                  Negocios neg=Negocios(data["nombre"], data["celular"], data["direccion"], data["geolocalizacion"], data["imagen"], data["paginaWeb"], data["telefono"], data["categoria"], data["actividad"], data["codigo"]);
                   Navigator.push(context,
-                    MaterialPageRoute(builder: (context)=> detalleNegocios(data['paginaWeb']))
+                    MaterialPageRoute(builder: (context)=> detalleNegocios(negocio: neg))
                   );
                 },
               ),
@@ -68,4 +69,29 @@ class _ConsultasState extends State<Consultas> {
       },
     );
   }
+}
+
+class Negocios{
+  String nombre="";
+  String celular="";
+  String direccion="";
+  String geolocalizacion="";
+  String imagen="";
+  String paginaWeb="";
+  String telefono="";
+  String categoria="";
+  String actividad="";
+  String codigo="";
+
+  Negocios(
+      this.nombre,
+      this.celular,
+      this.direccion,
+      this.geolocalizacion,
+      this.imagen,
+      this.paginaWeb,
+      this.telefono,
+      this.categoria,
+      this.actividad,
+      this.codigo);
 }
