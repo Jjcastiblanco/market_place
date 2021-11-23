@@ -1,7 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:marketplace/home_app.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,74 +15,85 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo2',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home:Login(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-
-
-
-
-  final String title;
+class Login extends StatefulWidget {
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _LoginState createState() => _LoginState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _LoginState extends State<Login> {
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+  final user=TextEditingController();
+  final password=TextEditingController();
+  String usu='';
+  String pass='';
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title:const Text("Ingrese a su tienda"),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+      body: ListView(
+        children: [
+          Container(
+            padding: EdgeInsets.all(20),
+            alignment: Alignment.center,
+            child: Image.asset('img/carro3.jpg'),
+          ),
+          Container(
+            padding: EdgeInsets.all(20),
+            alignment: Alignment.center,
+            child: TextField(
+              controller: user,
+              decoration: const InputDecoration(
+                hintText: 'Usuario'
+              ),
+            )
+          ),
+          Container(
+              padding: EdgeInsets.all(20),
+              alignment: Alignment.center,
+              child: TextField(
+                controller: password,
+                obscureText: true,
+                obscuringCharacter: "*",
+                decoration: const InputDecoration(
+                    hintText: 'Password',
+                ),
+              )
+          ),
+          Container(
+              padding: EdgeInsets.all(20),
+              alignment: Alignment.center,
+              child: ElevatedButton(
+                style: TextButton.styleFrom(
+                  primary: Colors.blueAccent,
+                ),
+                child: const Text('Ingresar', style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.white38
+                  ),
+                ),
+                onPressed: (){
+                  usu=user.text;
+                  pass=password.text;
+                  print(usu+"  " +pass);
+                  if (usu=="Cesar" && pass=="123456"){
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>home_app()),
+                    );
+                  }
+                },
+              )
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
