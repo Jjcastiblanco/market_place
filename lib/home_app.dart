@@ -9,6 +9,9 @@ import 'dart:convert';
 import 'package:marketplace/clientes.dart';
 import 'package:marketplace/negocios.dart';
 
+import 'filtroActividad.dart';
+import 'filtroProducto.dart';
+
 class home_app extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -70,6 +73,42 @@ class home_app extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => const Buscar()),
+                      );
+                    },
+                  )),
+              Container(
+                  padding: const EdgeInsets.all(50),
+                  alignment: Alignment.topCenter,
+                  child: ElevatedButton(
+                    style: TextButton.styleFrom(
+                      primary: Colors.blueAccent,
+                    ),
+                    child: const Text(
+                      'PRODUCTOS',
+                      style: TextStyle(fontSize: 18, color: Colors.white38),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const FiltroProducto()),
+                      );
+                    },
+                  )),
+              Container(
+                  padding: const EdgeInsets.all(50),
+                  alignment: Alignment.topCenter,
+                  child: ElevatedButton(
+                    style: TextButton.styleFrom(
+                      primary: Colors.blueAccent,
+                    ),
+                    child: const Text(
+                      'Filtro Categoria',
+                      style: TextStyle(fontSize: 18, color: Colors.white38),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const FiltroActividad()),
                       );
                     },
                   )),
