@@ -24,7 +24,7 @@ class home_app extends StatelessWidget {
           body: ListView(
             children: [
               Container(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(10),
                   alignment: Alignment.topCenter,
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
@@ -42,7 +42,7 @@ class home_app extends StatelessWidget {
                     },
                   )),
               Container(
-                  padding: EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.only(top: 10),
                   alignment: Alignment.topCenter,
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
@@ -60,7 +60,7 @@ class home_app extends StatelessWidget {
                     },
                   )),
               Container(
-                  padding: const EdgeInsets.all(50),
+                  padding: const EdgeInsets.all(10),
                   alignment: Alignment.topCenter,
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
@@ -78,14 +78,14 @@ class home_app extends StatelessWidget {
                     },
                   )),
               Container(
-                  padding: const EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(10),
                   alignment: Alignment.topCenter,
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
                       primary: Colors.blueAccent,
                     ),
                     child: const Text(
-                      'BUSCAR POR SERVICIOS ',
+                      'BUSCAR POR ACTIVIDAD',
                       style: TextStyle(fontSize: 18, color: Colors.white38),
                     ),
                     onPressed: () {
@@ -96,7 +96,7 @@ class home_app extends StatelessWidget {
                     },
                   )),
               Container(
-                  padding: const EdgeInsets.all(50),
+                  padding: const EdgeInsets.all(10),
                   alignment: Alignment.topCenter,
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
@@ -114,14 +114,14 @@ class home_app extends StatelessWidget {
                     },
                   )),
               Container(
-                  padding: const EdgeInsets.all(50),
+                  padding: const EdgeInsets.all(10),
                   alignment: Alignment.topCenter,
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
                       primary: Colors.blueAccent,
                     ),
                     child: const Text(
-                      'Filtro Categoria',
+                      'FILTRO POR CATEGORIA',
                       style: TextStyle(fontSize: 18, color: Colors.white38),
                     ),
                     onPressed: () {

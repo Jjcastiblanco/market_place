@@ -17,7 +17,7 @@ class _FiltroActividadState extends State<FiltroActividad> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Filtro por Actividad"),
+          title: Text("Filtro por Categoria"),
         ),
         body: Center(
           child: SizedBox(width: 250,child: Column(
