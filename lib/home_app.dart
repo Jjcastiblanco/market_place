@@ -9,6 +9,7 @@ import 'dart:convert';
 
 import 'package:marketplace/clientes.dart';
 import 'package:marketplace/negocios.dart';
+import 'package:marketplace/registroClientes.dart';
 
 import 'filtroActividad.dart';
 import 'filtroProducto.dart';
@@ -131,6 +132,24 @@ class home_app extends StatelessWidget {
                       );
                     },
                   )),
+              Container(
+                  padding: const EdgeInsets.all(10),
+                  alignment: Alignment.topCenter,
+                  child: ElevatedButton(
+                    style: TextButton.styleFrom(
+                      primary: Colors.blueAccent,
+                    ),
+                    child: const Text(
+                      'REGISTRO DE CLIENTES',
+                      style: TextStyle(fontSize: 18, color: Colors.white38),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const RegistroClientes()),
+                      );
+                    },
+                  ))
             ],
           )
       ),
