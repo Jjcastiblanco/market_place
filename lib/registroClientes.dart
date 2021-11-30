@@ -1,7 +1,9 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:marketplace/clientes.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+
 
 class GestionClientes extends StatelessWidget {
   const GestionClientes({Key? key}) : super(key: key);
@@ -22,6 +24,16 @@ class ReCliente extends StatefulWidget {
 }
 
 class _ReClienteState extends State<ReCliente> {
+
+  final direccion = TextEditingController();
+  final nombre = TextEditingController();
+  final celular = TextEditingController();
+  final telefono = TextEditingController();
+  final codigo = TextEditingController();
+
+  CollectionReference datoscliente = FirebaseFirestore.instance.collection("clientes");
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,12 +56,21 @@ class _ReClienteState extends State<ReCliente> {
             child: Image.asset('img/shop.png'),
 
           ),
-
           Container(
             padding: EdgeInsets.only(right: 30,left: 30, top: 40),
             alignment: Alignment.center,
             child: TextField(
-
+              controller: codigo,
+              decoration: InputDecoration(
+                hintText: 'Codigo',
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(right: 30,left: 30, top: 40),
+            alignment: Alignment.center,
+            child: TextField(
+              controller: nombre,
               decoration: InputDecoration(
                 hintText: 'Nombre',
               ),
@@ -59,7 +80,7 @@ class _ReClienteState extends State<ReCliente> {
             padding: EdgeInsets.only(right: 30,left: 30, top: 40),
             alignment: Alignment.center,
             child: TextField(
-
+              controller: celular,
               decoration: InputDecoration(
                 hintText: 'Celular',
               ),
@@ -69,7 +90,7 @@ class _ReClienteState extends State<ReCliente> {
             padding: EdgeInsets.only(right: 30,left: 30, top: 40),
             alignment: Alignment.center,
             child: TextField(
-
+              controller: telefono,
               decoration: InputDecoration(
                 hintText: 'Telefono',
               ),
@@ -79,7 +100,7 @@ class _ReClienteState extends State<ReCliente> {
             padding: EdgeInsets.only(right: 30,left: 30, top: 40,bottom: 30),
             alignment: Alignment.center,
             child: TextField(
-
+              controller: direccion,
               decoration: InputDecoration(
                 hintText: 'Direccion',
               ),
@@ -96,7 +117,30 @@ class _ReClienteState extends State<ReCliente> {
               ),
 
 
-              onPressed: () {  },
+              onPressed: () {
+                if(nombre.text.isEmpty || direccion.text.isEmpty || telefono.text.isEmpty || celular.text.isEmpty ){
+                    Fluttertoast.showToast(msg: "Ingrese todo los campos",
+                      toastLength:Toast.LENGTH_LONG,
+                      gravity: ToastGravity.CENTER
+                    );
+                }else{
+                  datoscliente.doc(codigo.text).set(
+                    {
+                      "Nombre": nombre.text,
+                      "direccion": direccion.text,
+                      "celular": celular.text,
+                      "telefono": telefono.text
+                    }
+                  );
+                  Fluttertoast.showToast(msg: "Datos Guardados",
+                      fontSize:20,
+                      backgroundColor: Colors.lightBlueAccent,
+                    textColor: Colors.yellow,
+                    toastLength: Toast.LENGTH_LONG,
+                    gravity: ToastGravity.BOTTOM
+                  );
+                }
+              },
 
 
               child: Text('Crear Cliente',

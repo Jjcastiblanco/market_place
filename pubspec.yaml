@@ -38,7 +38,7 @@ dependencies:
   firebase_core:
   cloud_firestore:
   firebase_database:
-
+  fluttertoast: ^8.0.8
 dev_dependencies:
   flutter_test:
     sdk: flutter
