@@ -5,8 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:convert';
 import 'package:marketplace/detalle_neg.dart';
 
-
-
 class negocios extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -24,7 +22,6 @@ class negocios extends StatelessWidget{
 }
 class Consultas extends StatefulWidget {
   const Consultas({Key? key}) : super(key: key);
-
   @override
   _ConsultasState createState() => _ConsultasState();
 }
@@ -32,7 +29,6 @@ class Consultas extends StatefulWidget {
 class _ConsultasState extends State<Consultas> {
 
   final Stream<QuerySnapshot> consultarNegocios = FirebaseFirestore.instance.collection('negocios').snapshots();
-
   @override
   Widget build(BuildContext context) {
 
@@ -49,7 +45,7 @@ class _ConsultasState extends State<Consultas> {
           children: snapshot.data!.docs.map((DocumentSnapshot document){
             Map<String,dynamic> data=document.data()! as Map<String,dynamic>;
             return Container(
-              color: Colors.indigo,
+              color: Colors.blue.shade300,
               margin: EdgeInsets.only(top:6),
               child: ListTile(
                 title: Text(data['nombre']),

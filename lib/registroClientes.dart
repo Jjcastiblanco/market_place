@@ -1,9 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:marketplace/clientes.dart';
 
-class RegistroClientes extends StatelessWidget {
-  const RegistroClientes({Key? key}) : super(key: key);
+class GestionClientes extends StatelessWidget {
+  const GestionClientes({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +26,12 @@ class _ReClienteState extends State<ReCliente> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shadowColor: Colors.cyanAccent,
-        backgroundColor: Colors.black,
+        shadowColor: Colors.teal,
+
+        backgroundColor: Colors.blue.shade900,
         toolbarHeight: 60,
-        title: Text('Market Place'),
+        title: Text('Market Place Gestion Clientes'),
+
 
       ),
       body: ListView(
@@ -41,7 +44,7 @@ class _ReClienteState extends State<ReCliente> {
             child: Image.asset('img/shop.png'),
 
           ),
-          Container(),
+
           Container(
             padding: EdgeInsets.only(right: 30,left: 30, top: 40),
             alignment: Alignment.center,
@@ -87,7 +90,7 @@ class _ReClienteState extends State<ReCliente> {
 
             child: ElevatedButton(
               style: TextButton.styleFrom(
-                backgroundColor: Colors.black54,
+                backgroundColor: Colors.blue.shade900,
                 padding: EdgeInsets.all(10),
 
               ),
@@ -96,9 +99,56 @@ class _ReClienteState extends State<ReCliente> {
               onPressed: () {  },
 
 
-              child: Text('Ingresar',
+              child: Text('Crear Cliente',
                 style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+
+
+          Container(
+            alignment: Alignment.center,
+
+            child: ElevatedButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.blue.shade900,
+                padding: EdgeInsets.all(10),
+              ),
+
+
+              onPressed: () {  },
+
+
+              child: Text('Consultar Cliente',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+
+
+
+          Container(
+            alignment: Alignment.center,
+            child: ElevatedButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.blue.shade900,
+
+                padding: EdgeInsets.all(10),
+              ),
+
+
+              onPressed: () {  },
+
+
+              child: Text('Actualizar Datos',
+                style: TextStyle(
+                  fontSize: 20,
                   color: Colors.white,
                 ),
               ),
@@ -108,7 +158,7 @@ class _ReClienteState extends State<ReCliente> {
             alignment: Alignment.center,
             child: ElevatedButton(
               style: TextButton.styleFrom(
-                backgroundColor: Colors.black54,
+                backgroundColor: Colors.blue.shade900,
 
                 padding: EdgeInsets.all(10),
               ),
@@ -117,9 +167,9 @@ class _ReClienteState extends State<ReCliente> {
               onPressed: () {  },
 
 
-              child: Text('Actualizar',
+              child: Text('Eliminar Datos',
                 style: TextStyle(
-                  fontSize: 25,
+                  fontSize: 20,
                   color: Colors.white,
                 ),
               ),
@@ -131,3 +181,11 @@ class _ReClienteState extends State<ReCliente> {
   }
 }
 
+class Cliente{
+  String nombre="";
+  String celular="";
+  String telefono="";
+  String direccion="";
+
+  Cliente(this.nombre, this.celular, this.telefono, this.direccion);
+}

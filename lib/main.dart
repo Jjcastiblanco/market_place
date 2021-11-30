@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marketplace/home_app.dart';
 
@@ -10,18 +11,16 @@ void main() async{
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home:Login(),
     );
   }
 }
 
 class Login extends StatefulWidget {
-
   @override
   _LoginState createState() => _LoginState();
 }
@@ -36,19 +35,27 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.brown.shade100,
+
       appBar: AppBar(
-        title:const Text("Ingrese a su tienda"),
+        title:const Text("Market Place Login"),
+        backgroundColor: Colors.brown.shade900,
       ),
       body: ListView(
+
         children: [
+
           Container(
             padding: EdgeInsets.all(20),
             alignment: Alignment.center,
-            child: Image.asset('img/carro3.jpg'),
+            height: 300,
+
+            child: Image.asset('img/market.png'),
           ),
           Container(
             padding: EdgeInsets.all(20),
             alignment: Alignment.center,
+
             child: TextField(
               controller: user,
               decoration: const InputDecoration(
@@ -59,6 +66,7 @@ class _LoginState extends State<Login> {
           Container(
               padding: EdgeInsets.all(20),
               alignment: Alignment.center,
+
               child: TextField(
                 controller: password,
                 obscureText: true,
@@ -69,22 +77,27 @@ class _LoginState extends State<Login> {
               )
           ),
           Container(
-              padding: EdgeInsets.all(20),
+
+              margin: EdgeInsets.only(top: 90),
               alignment: Alignment.center,
+
+
               child: ElevatedButton(
                 style: TextButton.styleFrom(
-                  primary: Colors.blueAccent,
+                  backgroundColor: Colors.brown.shade800,
+                  padding: EdgeInsets.all(10),
+
                 ),
-                child: const Text('Ingresar', style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white38
+                child: const Text('Inicio de Sesión', style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
                   ),
                 ),
                 onPressed: (){
                   usu=user.text;
                   pass=password.text;
                   print(usu+"  " +pass);
-                  if (usu=="Cesar" && pass=="123456"){
+                  if (usu=="usuario" && pass=="1234"){
                     Navigator.push(context,
                       MaterialPageRoute(builder: (context)=>home_app()),
                     );
@@ -92,6 +105,29 @@ class _LoginState extends State<Login> {
                 },
               )
           ),
+          Container(
+              alignment: Alignment.center,
+
+              child: ElevatedButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.brown.shade800,
+                  padding: EdgeInsets.all(10),
+
+                ),
+                child: const Text('Iniciar sin Cuenta', style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+                ),
+                onPressed: (){
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context)=>home_app()),
+                  );
+
+                },
+              )
+          ),
+
         ],
       ),
     );

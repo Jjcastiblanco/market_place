@@ -20,20 +20,21 @@ class home_app extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
-            title: const Text("Bienvenido(a)"),
+            title: const Text("Market Place Bienvenido(a) "),
+            backgroundColor:Colors.blue.shade900 ,
           ),
           body: ListView(
             children: [
               Container(
-                  padding: EdgeInsets.all(10),
-                  alignment: Alignment.topCenter,
+                  padding: EdgeInsets.all(5),
+                  margin: EdgeInsets.all(10),
+                  alignment: Alignment.topLeft,
+                  color: Colors.blue.shade50,
                   child: ElevatedButton(
-                    style: TextButton.styleFrom(
-                      primary: Colors.blueAccent,
-                    ),
                     child: const Text(
-                      'CLIENTES',
-                      style: TextStyle(fontSize: 18, color: Colors.white38),
+                      'Clientes',
+
+                      style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     onPressed: () {
                       Navigator.push(
@@ -43,15 +44,16 @@ class home_app extends StatelessWidget {
                     },
                   )),
               Container(
-                  padding: EdgeInsets.only(top: 10),
-                  alignment: Alignment.topCenter,
+                  padding: EdgeInsets.all(5),
+                  margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
+                  alignment: Alignment.topLeft,
+                  color: Colors.blue.shade50,
+
                   child: ElevatedButton(
-                    style: TextButton.styleFrom(
-                      primary: Colors.blueAccent,
-                    ),
+
                     child: const Text(
-                      'NEGOCIOS',
-                      style: TextStyle(fontSize: 18, color: Colors.white38),
+                      'Negocios Registrados',
+                      style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     onPressed: () {
                       Navigator.push(
@@ -61,15 +63,16 @@ class home_app extends StatelessWidget {
                     },
                   )),
               Container(
-                  padding: const EdgeInsets.all(10),
-                  alignment: Alignment.topCenter,
+                  padding: EdgeInsets.all(5),
+                  margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
+                  alignment: Alignment.topLeft,
+                  color: Colors.blue.shade50,
+
                   child: ElevatedButton(
-                    style: TextButton.styleFrom(
-                      primary: Colors.blueAccent,
-                    ),
+
                     child: const Text(
-                      'BUSCAR',
-                      style: TextStyle(fontSize: 18, color: Colors.white38),
+                      'Buscar Negocio por Nombre',
+                      style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     onPressed: () {
                       Navigator.push(
@@ -79,15 +82,16 @@ class home_app extends StatelessWidget {
                     },
                   )),
               Container(
-                  padding: const EdgeInsets.all(10),
-                  alignment: Alignment.topCenter,
+                  padding: EdgeInsets.all(5),
+                  margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
+                  alignment: Alignment.topLeft,
+                  color: Colors.blue.shade50,
+
                   child: ElevatedButton(
-                    style: TextButton.styleFrom(
-                      primary: Colors.blueAccent,
-                    ),
+
                     child: const Text(
-                      'BUSCAR POR ACTIVIDAD',
-                      style: TextStyle(fontSize: 18, color: Colors.white38),
+                      'Buscar Negocios por Actividad (1,2)',
+                      style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     onPressed: () {
                       Navigator.push(
@@ -97,15 +101,18 @@ class home_app extends StatelessWidget {
                     },
                   )),
               Container(
-                  padding: const EdgeInsets.all(10),
-                  alignment: Alignment.topCenter,
+                  padding: EdgeInsets.all(5),
+                  margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
+                  alignment: Alignment.topLeft,
+                  color: Colors.blue.shade50,
+
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
                       primary: Colors.blueAccent,
                     ),
                     child: const Text(
-                      'PRODUCTOS',
-                      style: TextStyle(fontSize: 18, color: Colors.white38),
+                      'Productos Ofrecidos',
+                      style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     onPressed: () {
                       Navigator.push(
@@ -115,38 +122,44 @@ class home_app extends StatelessWidget {
                     },
                   )),
               Container(
-                  padding: const EdgeInsets.all(10),
-                  alignment: Alignment.topCenter,
+                  padding: EdgeInsets.all(5),
+                  margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
+                  alignment: Alignment.topLeft,
+                  color: Colors.blue.shade50,
+
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
                       primary: Colors.blueAccent,
                     ),
                     child: const Text(
-                      'FILTRO POR CATEGORIA',
-                      style: TextStyle(fontSize: 18, color: Colors.white38),
+                      'Filtro por Tipo de Negocio',
+                      style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const FiltroActividad()),
+                        MaterialPageRoute(builder: (context) => const FiltroCategoria()),
                       );
                     },
                   )),
               Container(
-                  padding: const EdgeInsets.all(10),
-                  alignment: Alignment.topCenter,
+                  padding: EdgeInsets.all(5),
+                  margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
+                  alignment: Alignment.topLeft,
+                  color: Colors.blue.shade50,
+
                   child: ElevatedButton(
                     style: TextButton.styleFrom(
                       primary: Colors.blueAccent,
                     ),
                     child: const Text(
-                      'REGISTRO DE CLIENTES',
-                      style: TextStyle(fontSize: 18, color: Colors.white38),
+                      'Gestión de Clientes (C.R.U.D)',
+                      style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const RegistroClientes()),
+                        MaterialPageRoute(builder: (context) => const GestionClientes()),
                       );
                     },
                   ))

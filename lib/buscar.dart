@@ -16,7 +16,8 @@ class _BuscarState extends State<Buscar> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Filtrar"),
+          title: Text("Filtro Por Negocio"),
+          backgroundColor: Colors.blue.shade900,
         ),
         body: Center(
           child: SizedBox(width: 250,child: Column(
@@ -36,6 +37,7 @@ class _BuscarState extends State<Buscar> {
               Expanded(
                 child: DatoFiltro(
                   text: buscar.text,
+
                 ),
               ),
             ],
@@ -73,8 +75,9 @@ class DatoFiltro extends StatelessWidget{
               children: snapshot.data!.docs.map((DocumentSnapshot document){
                 Map<String,dynamic> data=document.data()! as Map<String,dynamic>;
                 return Container(
-                  color: Colors.indigo,
-                  margin: EdgeInsets.only(top:6),
+                  color: Colors.blue.shade300,
+                  margin: EdgeInsets.only(top:10),
+                  padding: EdgeInsets.all(10),
                   child: ListTile(
                     title: Text(data['nombre']),
                     subtitle: Text(data['direccion']),

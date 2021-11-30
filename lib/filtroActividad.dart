@@ -3,14 +3,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 
-class FiltroActividad extends StatefulWidget {
-  const FiltroActividad({Key? key}) : super(key: key);
+class FiltroCategoria extends StatefulWidget {
+  const FiltroCategoria({Key? key}) : super(key: key);
 
   @override
-  _FiltroActividadState createState() => _FiltroActividadState();
+  _FiltroCategoriaState createState() => _FiltroCategoriaState();
 }
 
-class _FiltroActividadState extends State<FiltroActividad> {
+class _FiltroCategoriaState extends State<FiltroCategoria> {
   TextEditingController filtrar=TextEditingController();
   @override
   Widget build(BuildContext context) {
