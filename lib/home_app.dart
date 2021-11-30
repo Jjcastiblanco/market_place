@@ -23,148 +23,242 @@ class home_app extends StatelessWidget {
             title: const Text("Market Place Bienvenido(a) "),
             backgroundColor:Colors.blue.shade900 ,
           ),
-          body: ListView(
-            children: [
-              Container(
-                  padding: EdgeInsets.all(5),
-                  margin: EdgeInsets.all(10),
-                  alignment: Alignment.topLeft,
-                  color: Colors.blue.shade50,
-                  child: ElevatedButton(
-                    child: const Text(
-                      'Clientes',
-
-                      style: TextStyle(fontSize: 18, color: Colors.white),
+          drawer: Drawer(
+            child: ListView(
+              //padding: EdgeInsets.all(20),
+                children: [
+                  UserAccountsDrawerHeader(
+                    decoration: const BoxDecoration(
+                      //color: Color.fromARGB(40, 200, 0, 0)
+                        gradient: LinearGradient(colors: [Colors.blueAccent, Colors.black38], begin: Alignment.topCenter, end: Alignment.bottomCenter)
                     ),
-                    onPressed: () {
+                    accountName: const Text("Anonimo"),
+                    accountEmail: const Text("Anonimo"),
+                    currentAccountPicture:Image.asset("img/shop.png"),
+                  ),
+                  ListTile(
+                    title: const Text("Gestion Clientes"),
+                    //leading: Image.asset("img/fondo.jpg"),
+                    leading: const Icon(Icons.supervised_user_circle),
+                    onTap: (){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => clientes()),
+                        MaterialPageRoute(builder: (context) => GestionClientes()),
                       );
                     },
-                  )),
-              Container(
-                  padding: EdgeInsets.all(5),
-                  margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
-                  alignment: Alignment.topLeft,
-                  color: Colors.blue.shade50,
-
-                  child: ElevatedButton(
-
-                    child: const Text(
-                      'Negocios Registrados',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                    onPressed: () {
+                  ),
+                  ListTile(
+                    title: const Text("Lista Negocios"),
+                    //leading: Image.asset("img/fondo.jpg"),
+                    leading: const Icon(Icons.assignment_outlined),
+                    onTap: (){
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => negocios()),
                       );
                     },
-                  )),
-              Container(
-                  padding: EdgeInsets.all(5),
-                  margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
-                  alignment: Alignment.topLeft,
-                  color: Colors.blue.shade50,
-
-                  child: ElevatedButton(
-
-                    child: const Text(
-                      'Buscar Negocio por Nombre',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                    onPressed: () {
+                  ),
+                  ListTile(
+                    title: const Text("Listado Productos"),
+                    //leading: Image.asset("img/fondo.jpg"),
+                    leading: const Icon(Icons.assignment_outlined),
+                    onTap: (){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const Buscar()),
+                        MaterialPageRoute(builder: (context) => FiltroProducto()),
                       );
                     },
-                  )),
-              Container(
-                  padding: EdgeInsets.all(5),
-                  margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
-                  alignment: Alignment.topLeft,
-                  color: Colors.blue.shade50,
-
-                  child: ElevatedButton(
-
-                    child: const Text(
-                      'Buscar Negocios por Actividad (1,2)',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                    onPressed: () {
+                  ),
+                  ListTile(
+                    title: const Text("Buscar Negocios"),
+                    //leading: Image.asset("img/fondo.jpg"),
+                    leading: const Icon(Icons.business_center_outlined),
+                    onTap: (){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const Buscar_por_tipo()),
+                        MaterialPageRoute(builder: (context) => Buscar()),
                       );
                     },
-                  )),
-              Container(
-                  padding: EdgeInsets.all(5),
-                  margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
-                  alignment: Alignment.topLeft,
-                  color: Colors.blue.shade50,
-
-                  child: ElevatedButton(
-                    style: TextButton.styleFrom(
-                      primary: Colors.blueAccent,
-                    ),
-                    child: const Text(
-                      'Productos Ofrecidos',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                    onPressed: () {
+                  ),
+                  ListTile(
+                    title: const Text("Buscar Tipo Negocios"),
+                    //leading: Image.asset("img/fondo.jpg"),
+                    leading: const Icon(Icons.business_center_outlined),
+                    onTap: (){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const FiltroProducto()),
+                        MaterialPageRoute(builder: (context) => FiltroCategoria()),
                       );
                     },
-                  )),
-              Container(
-                  padding: EdgeInsets.all(5),
-                  margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
-                  alignment: Alignment.topLeft,
-                  color: Colors.blue.shade50,
-
-                  child: ElevatedButton(
-                    style: TextButton.styleFrom(
-                      primary: Colors.blueAccent,
-                    ),
-                    child: const Text(
-                      'Filtro por Tipo de Negocio',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                    onPressed: () {
+                  ),
+                  ListTile(
+                    title: const Text("Buscar Negocios Actividad"),
+                    //leading: Image.asset("img/fondo.jpg"),
+                    leading: const Icon(Icons.business_center_outlined),
+                    onTap: (){
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const FiltroCategoria()),
+                        MaterialPageRoute(builder: (context) => Buscar_por_tipo()),
                       );
                     },
-                  )),
-              Container(
-                  padding: EdgeInsets.all(5),
-                  margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
-                  alignment: Alignment.topLeft,
-                  color: Colors.blue.shade50,
+                  ),
+                  ListTile(
+                    title: const Text("Comprar"),
+                    //leading: Image.asset("img/fondo.jpg"),
+                    leading: const Icon(Icons.add_shopping_cart),
+                    onTap: (){
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => Buscar_por_tipo()),
+                      // );
+                    },
+                  ),
 
-                  child: ElevatedButton(
-                    style: TextButton.styleFrom(
-                      primary: Colors.blueAccent,
-                    ),
-                    child: const Text(
-                      'Gestión de Clientes (C.R.U.D)',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const GestionClientes()),
-                      );
-                    },
-                  ))
-            ],
-          )
+                ]
+            ),
+          ),
+          body: ListView(
+          //   children: [
+          //     Container(
+          //         padding: EdgeInsets.all(5),
+          //         margin: EdgeInsets.all(10),
+          //         alignment: Alignment.topLeft,
+          //         color: Colors.blue.shade50,
+          //         child: ElevatedButton(
+          //           child: const Text(
+          //             'Clientes',
+          //
+          //             style: TextStyle(fontSize: 18, color: Colors.white),
+          //           ),
+          //           onPressed: () {
+          //             Navigator.push(
+          //               context,
+          //               MaterialPageRoute(builder: (context) => clientes()),
+          //             );
+          //           },
+          //         )),
+          //     Container(
+          //         padding: EdgeInsets.all(5),
+          //         margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
+          //         alignment: Alignment.topLeft,
+          //         color: Colors.blue.shade50,
+          //
+          //         child: ElevatedButton(
+          //
+          //           child: const Text(
+          //             'Negocios Registrados',
+          //             style: TextStyle(fontSize: 18, color: Colors.white),
+          //           ),
+          //           onPressed: () {
+          //             Navigator.push(
+          //               context,
+          //               MaterialPageRoute(builder: (context) => negocios()),
+          //             );
+          //           },
+          //         )),
+          //     Container(
+          //         padding: EdgeInsets.all(5),
+          //         margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
+          //         alignment: Alignment.topLeft,
+          //         color: Colors.blue.shade50,
+          //
+          //         child: ElevatedButton(
+          //
+          //           child: const Text(
+          //             'Buscar Negocio por Nombre',
+          //             style: TextStyle(fontSize: 18, color: Colors.white),
+          //           ),
+          //           onPressed: () {
+          //             Navigator.push(
+          //               context,
+          //               MaterialPageRoute(builder: (context) => const Buscar()),
+          //             );
+          //           },
+          //         )),
+          //     Container(
+          //         padding: EdgeInsets.all(5),
+          //         margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
+          //         alignment: Alignment.topLeft,
+          //         color: Colors.blue.shade50,
+          //
+          //         child: ElevatedButton(
+          //
+          //           child: const Text(
+          //             'Buscar Negocios por Actividad (1,2)',
+          //             style: TextStyle(fontSize: 18, color: Colors.white),
+          //           ),
+          //           onPressed: () {
+          //             Navigator.push(
+          //               context,
+          //               MaterialPageRoute(builder: (context) => const Buscar_por_tipo()),
+          //             );
+          //           },
+          //         )),
+          //     Container(
+          //         padding: EdgeInsets.all(5),
+          //         margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
+          //         alignment: Alignment.topLeft,
+          //         color: Colors.blue.shade50,
+          //
+          //         child: ElevatedButton(
+          //           style: TextButton.styleFrom(
+          //             primary: Colors.blueAccent,
+          //           ),
+          //           child: const Text(
+          //             'Productos Ofrecidos',
+          //             style: TextStyle(fontSize: 18, color: Colors.white),
+          //           ),
+          //           onPressed: () {
+          //             Navigator.push(
+          //               context,
+          //               MaterialPageRoute(builder: (context) => const FiltroProducto()),
+          //             );
+          //           },
+          //         )),
+          //     Container(
+          //         padding: EdgeInsets.all(5),
+          //         margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
+          //         alignment: Alignment.topLeft,
+          //         color: Colors.blue.shade50,
+          //
+          //         child: ElevatedButton(
+          //           style: TextButton.styleFrom(
+          //             primary: Colors.blueAccent,
+          //           ),
+          //           child: const Text(
+          //             'Filtro por Tipo de Negocio',
+          //             style: TextStyle(fontSize: 18, color: Colors.white),
+          //           ),
+          //           onPressed: () {
+          //             Navigator.push(
+          //               context,
+          //               MaterialPageRoute(builder: (context) => const FiltroCategoria()),
+          //             );
+          //           },
+          //         )),
+          //     Container(
+          //         padding: EdgeInsets.all(5),
+          //         margin: EdgeInsets.only(bottom:10,left: 10,right: 10),
+          //         alignment: Alignment.topLeft,
+          //         color: Colors.blue.shade50,
+          //
+          //         child: ElevatedButton(
+          //           style: TextButton.styleFrom(
+          //             primary: Colors.blueAccent,
+          //           ),
+          //           child: const Text(
+          //             'Gestión de Clientes (C.R.U.D)',
+          //             style: TextStyle(fontSize: 18, color: Colors.white),
+          //           ),
+          //           onPressed: () {
+          //             Navigator.push(
+          //               context,
+          //               MaterialPageRoute(builder: (context) => const GestionClientes()),
+          //             );
+          //           },
+          //         ))
+          //   ],
+         )
       ),
     );
   }

@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:marketplace/registroClientes.dart';
+
+import 'buscar.dart';
+import 'buscar_por_tipo.dart';
+import 'filtroProducto.dart';
+import 'negocios.dart';
 
 
 class FiltroCategoria extends StatefulWidget {
@@ -18,6 +24,100 @@ class _FiltroCategoriaState extends State<FiltroCategoria> {
       home: Scaffold(
         appBar: AppBar(
           title: Text("Filtro por Categoria"),
+        ),
+        drawer: Drawer(
+          child: ListView(
+            //padding: EdgeInsets.all(20),
+              children: [
+                UserAccountsDrawerHeader(
+                  decoration: const BoxDecoration(
+                    //color: Color.fromARGB(40, 200, 0, 0)
+                      gradient: LinearGradient(colors: [Colors.blueAccent, Colors.black38], begin: Alignment.topCenter, end: Alignment.bottomCenter)
+                  ),
+                  accountName: const Text("Anonimo"),
+                  accountEmail: const Text("Anonimo"),
+                  currentAccountPicture:Image.asset("img/shop.png"),
+                ),
+                ListTile(
+                  title: const Text("Gestion Clientes"),
+                  //leading: Image.asset("img/fondo.jpg"),
+                  leading: const Icon(Icons.supervised_user_circle),
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => GestionClientes()),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text("Lista Negocios"),
+                  //leading: Image.asset("img/fondo.jpg"),
+                  leading: const Icon(Icons.assignment_outlined),
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => negocios()),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text("Listado Productos"),
+                  //leading: Image.asset("img/fondo.jpg"),
+                  leading: const Icon(Icons.assignment_outlined),
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FiltroProducto()),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text("Buscar Negocios"),
+                  //leading: Image.asset("img/fondo.jpg"),
+                  leading: const Icon(Icons.business_center_outlined),
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Buscar()),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text("Buscar Tipo Negocios"),
+                  //leading: Image.asset("img/fondo.jpg"),
+                  leading: const Icon(Icons.business_center_outlined),
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FiltroCategoria()),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text("Buscar Negocios Actividad"),
+                  //leading: Image.asset("img/fondo.jpg"),
+                  leading: const Icon(Icons.business_center_outlined),
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Buscar_por_tipo()),
+                    );
+                  },
+                ),
+                ListTile(
+                  title: const Text("Comprar"),
+                  //leading: Image.asset("img/fondo.jpg"),
+                  leading: const Icon(Icons.add_shopping_cart),
+                  onTap: (){
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => Buscar_por_tipo()),
+                    // );
+                  },
+                ),
+
+              ]
+          ),
         ),
         body: Center(
           child: SizedBox(width: 250,child: Column(
