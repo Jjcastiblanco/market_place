@@ -11,6 +11,7 @@ import 'package:marketplace/clientes.dart';
 import 'package:marketplace/negocios.dart';
 import 'package:marketplace/registroClientes.dart';
 
+import 'filtrarProductos.dart';
 import 'filtroActividad.dart';
 import 'filtroProducto.dart';
 
@@ -18,25 +19,30 @@ class home_app extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.brown.shade200,
           appBar: AppBar(
             title: const Text("Market Place Bienvenido(a) "),
-            backgroundColor:Colors.blue.shade900 ,
+            centerTitle: true,
+            backgroundColor:Colors.brown.shade900 ,
           ),
           drawer: Drawer(
+
             child: ListView(
               //padding: EdgeInsets.all(20),
                 children: [
                   UserAccountsDrawerHeader(
                     decoration: const BoxDecoration(
                       //color: Color.fromARGB(40, 200, 0, 0)
-                        gradient: LinearGradient(colors: [Colors.blueAccent, Colors.black38], begin: Alignment.topCenter, end: Alignment.bottomCenter)
+                        gradient: LinearGradient(colors: [Colors.brown, Colors.black38], begin: Alignment.topCenter, end: Alignment.bottomCenter)
                     ),
-                    accountName: const Text("Anonimo"),
-                    accountEmail: const Text("Anonimo"),
-                    currentAccountPicture:Image.asset("img/shop.png"),
+                    accountName: const Text("Usuario"),
+                    accountEmail: const Text("usuario@gmail.com"),
+                    currentAccountPicture:Image.asset("img/market.png"),
                   ),
                   ListTile(
+
                     title: const Text("Gestion Clientes"),
                     //leading: Image.asset("img/fondo.jpg"),
                     leading: const Icon(Icons.supervised_user_circle),
@@ -103,6 +109,17 @@ class home_app extends StatelessWidget {
                     },
                   ),
                   ListTile(
+                    title: const Text("Filtrar Productos"),
+                    //leading: Image.asset("img/fondo.jpg"),
+                    leading: const Icon(Icons.business_center_outlined),
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FiltroPorProductos()),
+                      );
+                    },
+                  ),
+                  ListTile(
                     title: const Text("Comprar"),
                     //leading: Image.asset("img/fondo.jpg"),
                     leading: const Icon(Icons.add_shopping_cart),
@@ -118,6 +135,14 @@ class home_app extends StatelessWidget {
             ),
           ),
           body: ListView(
+              children: [
+            Container(
+              padding: EdgeInsets.all(20),
+              alignment: Alignment.center,
+              height: 300,
+
+              child: Image.asset('img/market.png'),
+            ),
           //   children: [
           //     Container(
           //         padding: EdgeInsets.all(5),
@@ -257,7 +282,7 @@ class home_app extends StatelessWidget {
           //             );
           //           },
           //         ))
-          //   ],
+            ],
          )
       ),
     );

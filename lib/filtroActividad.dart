@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:marketplace/filtrarProductos.dart';
 import 'package:marketplace/registroClientes.dart';
 
 import 'buscar.dart';
@@ -21,9 +22,13 @@ class _FiltroCategoriaState extends State<FiltroCategoria> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.brown.shade200,
         appBar: AppBar(
-          title: Text("Filtro por Categoria"),
+          backgroundColor: Colors.brown.shade900,
+          title: Text(" Market Place Filtrar por Tipo"),
+          centerTitle: true,
         ),
         drawer: Drawer(
           child: ListView(
@@ -32,12 +37,13 @@ class _FiltroCategoriaState extends State<FiltroCategoria> {
                 UserAccountsDrawerHeader(
                   decoration: const BoxDecoration(
                     //color: Color.fromARGB(40, 200, 0, 0)
-                      gradient: LinearGradient(colors: [Colors.blueAccent, Colors.black38], begin: Alignment.topCenter, end: Alignment.bottomCenter)
+                      gradient: LinearGradient(colors: [Colors.brown, Colors.black38], begin: Alignment.topCenter, end: Alignment.bottomCenter)
                   ),
-                  accountName: const Text("Anonimo"),
-                  accountEmail: const Text("Anonimo"),
-                  currentAccountPicture:Image.asset("img/shop.png"),
+                  accountName: const Text("Usuario"),
+                  accountEmail: const Text("usuario@gmail.com"),
+                  currentAccountPicture:Image.asset("img/market.png"),
                 ),
+
                 ListTile(
                   title: const Text("Gestion Clientes"),
                   //leading: Image.asset("img/fondo.jpg"),
@@ -105,6 +111,17 @@ class _FiltroCategoriaState extends State<FiltroCategoria> {
                   },
                 ),
                 ListTile(
+                  title: const Text("Filtrar Productos"),
+                  //leading: Image.asset("img/fondo.jpg"),
+                  leading: const Icon(Icons.business_center_outlined),
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FiltroPorProductos()),
+                    );
+                  },
+                ),
+                ListTile(
                   title: const Text("Comprar"),
                   //leading: Image.asset("img/fondo.jpg"),
                   leading: const Icon(Icons.add_shopping_cart),
@@ -119,8 +136,9 @@ class _FiltroCategoriaState extends State<FiltroCategoria> {
               ]
           ),
         ),
+
         body: Center(
-          child: SizedBox(width: 250,child: Column(
+          child: SizedBox(width: 400,child: Column(
             children: [
               Container(
                 padding: EdgeInsets.all(10),
@@ -174,7 +192,7 @@ class DatoFiltro extends StatelessWidget{
               children: snapshot.data!.docs.map((DocumentSnapshot document){
                 Map<String,dynamic> data=document.data()! as Map<String,dynamic>;
                 return Container(
-                  color: Colors.indigo,
+                  color: Colors.brown.shade100,
                   margin: EdgeInsets.only(top:6),
                   child: ListTile(
                     title: Text(data['nombre']),

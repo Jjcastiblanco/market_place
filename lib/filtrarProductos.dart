@@ -3,21 +3,21 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:marketplace/registroClientes.dart';
 
+import 'buscar.dart';
 import 'buscar_por_tipo.dart';
-import 'filtrarProductos.dart';
-import 'filtroActividad.dart';
 import 'filtroProducto.dart';
 import 'negocios.dart';
 
-class Buscar extends StatefulWidget {
-  const Buscar({Key? key}) : super(key: key);
+
+class FiltroPorProductos extends StatefulWidget {
+  const FiltroPorProductos({Key? key}) : super(key: key);
 
   @override
-  _BuscarState createState() => _BuscarState();
+  _FiltroPorProductosState createState() => _FiltroPorProductosState();
 }
 
-class _BuscarState extends State<Buscar> {
-  TextEditingController buscar=TextEditingController();
+class _FiltroPorProductosState extends State<FiltroPorProductos> {
+  TextEditingController filtrar=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,15 +26,13 @@ class _BuscarState extends State<Buscar> {
         backgroundColor: Colors.brown.shade200,
         appBar: AppBar(
           backgroundColor: Colors.brown.shade900,
-          title: Text("Filtro Por Negocio"),
+          title: Text(" Market Place Filtrar por Productos"),
           centerTitle: true,
-
         ),
         drawer: Drawer(
           child: ListView(
             //padding: EdgeInsets.all(20),
               children: [
-
                 UserAccountsDrawerHeader(
                   decoration: const BoxDecoration(
                     //color: Color.fromARGB(40, 200, 0, 0)
@@ -96,7 +94,7 @@ class _BuscarState extends State<Buscar> {
                   onTap: (){
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => FiltroCategoria()),
+                      MaterialPageRoute(builder: (context) => FiltroPorProductos()),
                     );
                   },
                 ),
@@ -137,27 +135,25 @@ class _BuscarState extends State<Buscar> {
               ]
           ),
         ),
+
         body: Center(
           child: SizedBox(width: 400,child: Column(
             children: [
               Container(
                 padding: EdgeInsets.all(10),
                 child: TextField(
-
-                  controller:buscar,
+                  controller:filtrar,
                   onChanged: (value){
                     setState(() {});
                   },
                   decoration: InputDecoration(
-                    hintText: "Ingrese dato a buscar"
-
+                      hintText: "Ingrese dato a buscar"
                   ),
                 ),
               ),
               Expanded(
                 child: DatoFiltro(
-                  text: buscar.text,
-
+                  text: filtrar.text,
                 ),
               ),
             ],
@@ -176,7 +172,7 @@ class DatoFiltro extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     //print(text);
-    final Stream<QuerySnapshot>filtroConsulta = FirebaseFirestore.instance.collection('negocios').where('nombre',isEqualTo:text).snapshots();
+    final Stream<QuerySnapshot>filtroConsulta = FirebaseFirestore.instance.collection('productos').where('nombre',isEqualTo:text).snapshots();
     //final Stream<QuerySnapshot>filtroConsulta = FirebaseFirestore.instance.collection('clientes').where('idioma',arrayContainsAny:[text.toLowerCase()]).snapshots();
 
     return StreamBuilder<QuerySnapshot>(
@@ -196,11 +192,11 @@ class DatoFiltro extends StatelessWidget{
                 Map<String,dynamic> data=document.data()! as Map<String,dynamic>;
                 return Container(
                   color: Colors.brown.shade100,
-                  margin: EdgeInsets.only(top:10),
-                  padding: EdgeInsets.all(10),
+                  margin: EdgeInsets.only(top:6),
                   child: ListTile(
-                    title: Text(data['nombre']),
-                    subtitle: Text(data['direccion']),
+                    title: Text(data['nombre']+ '  \$ '+data['precio']),
+                    subtitle: Text(data['categoria']+ '  '+data['codigoAlmacen']),
+                    //leading: Image.network(data['imagen'],width: 100,height: 100),
                   ),
                 );
               }
@@ -210,4 +206,3 @@ class DatoFiltro extends StatelessWidget{
     );
   }
 }
-

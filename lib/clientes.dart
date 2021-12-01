@@ -8,6 +8,7 @@ import 'dart:convert';
 
 import 'buscar.dart';
 import 'buscar_por_tipo.dart';
+import 'filtrarProductos.dart';
 import 'filtroActividad.dart';
 import 'filtroProducto.dart';
 import 'negocios.dart';
@@ -25,15 +26,17 @@ class clientes extends StatelessWidget{
             child: ListView(
               //padding: EdgeInsets.all(20),
                 children: [
+
                   UserAccountsDrawerHeader(
                     decoration: const BoxDecoration(
                       //color: Color.fromARGB(40, 200, 0, 0)
-                        gradient: LinearGradient(colors: [Colors.blueAccent, Colors.black38], begin: Alignment.topCenter, end: Alignment.bottomCenter)
+                        gradient: LinearGradient(colors: [Colors.brown, Colors.black], begin: Alignment.topCenter, end: Alignment.bottomCenter)
                     ),
-                    accountName: const Text("Anonimo"),
-                    accountEmail: const Text("Anonimo"),
-                    currentAccountPicture:Image.asset("img/shop.png"),
+                    accountName: const Text("Usuario"),
+                    accountEmail: const Text("usuario@gmail.com"),
+                    currentAccountPicture:Image.asset("img/market.png"),
                   ),
+
                   ListTile(
                     title: const Text("Gestion Clientes"),
                     //leading: Image.asset("img/fondo.jpg"),
@@ -97,6 +100,17 @@ class clientes extends StatelessWidget{
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => Buscar_por_tipo()),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    title: const Text("Filtrar Productos"),
+                    //leading: Image.asset("img/fondo.jpg"),
+                    leading: const Icon(Icons.business_center_outlined),
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FiltroPorProductos()),
                       );
                     },
                   ),

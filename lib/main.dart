@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marketplace/home_app.dart';
+import 'package:marketplace/registroClientes.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +41,10 @@ class _LoginState extends State<Login> {
       appBar: AppBar(
         title:const Text("Market Place Login"),
         backgroundColor: Colors.brown.shade900,
+        shadowColor: Colors.black,
+        elevation: 50,
+        centerTitle: true,
+
       ),
       body: ListView(
 
@@ -78,17 +83,18 @@ class _LoginState extends State<Login> {
           ),
           Container(
 
-              margin: EdgeInsets.only(top: 90),
+              margin: EdgeInsets.only(top: 50),
               alignment: Alignment.center,
-
 
               child: ElevatedButton(
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.brown.shade800,
                   padding: EdgeInsets.all(10),
-
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                    )
                 ),
-                child: const Text('Inicio de Sesión', style: TextStyle(
+                child: const Text('Iniciar Sesión', style: TextStyle(
                   fontSize: 20,
                   color: Colors.white,
                   ),
@@ -107,27 +113,51 @@ class _LoginState extends State<Login> {
           ),
           Container(
               alignment: Alignment.center,
-
               child: ElevatedButton(
                 style: TextButton.styleFrom(
-                  backgroundColor: Colors.brown.shade800,
-                  padding: EdgeInsets.all(10),
-
+                    backgroundColor: Colors.brown.shade800,
+                    padding: EdgeInsets.all(10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                    )
                 ),
-                child: const Text('Iniciar sin Cuenta', style: TextStyle(
+                child: const Text('Crear Cuenta', style: TextStyle(
                   fontSize: 20,
                   color: Colors.white,
                 ),
                 ),
                 onPressed: (){
                   Navigator.push(context,
+                   MaterialPageRoute(builder: (context)=> ReCliente()),
+                );
+                },
+
+              )
+          ),
+          Container(
+              alignment: Alignment.center,
+
+              child: ElevatedButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.brown.shade800,
+                  padding: EdgeInsets.all(10),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                  )
+                ),
+                child: const Text('Iniciar sin Cuenta', style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+
+                ),
+                ),
+                onPressed: (){
+                  Navigator.push(context,
                     MaterialPageRoute(builder: (context)=>home_app()),
                   );
-
                 },
               )
           ),
-
         ],
       ),
     );
