@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'buscar.dart';
 import 'buscar_por_tipo.dart';
+import 'filtrarProductos.dart';
 import 'filtroActividad.dart';
 import 'filtroProducto.dart';
 
@@ -19,23 +20,29 @@ class _detalleNegociosState extends State<detalleNegocios> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.brown.shade200,
         appBar: AppBar(
-          title: Text("Detalle " + widget.negocio.nombre),
+          backgroundColor: Colors.brown.shade900,
+          title: Text("Informacion de " + widget.negocio.nombre),
+          centerTitle: true,
         ),
         drawer: Drawer(
           child: ListView(
             //padding: EdgeInsets.all(20),
               children: [
+
                 UserAccountsDrawerHeader(
                   decoration: const BoxDecoration(
                     //color: Color.fromARGB(40, 200, 0, 0)
-                      gradient: LinearGradient(colors: [Colors.blueAccent, Colors.black38], begin: Alignment.topCenter, end: Alignment.bottomCenter)
+                      gradient: LinearGradient(colors: [Colors.brown, Colors.black38], begin: Alignment.topCenter, end: Alignment.bottomCenter)
                   ),
-                  accountName: const Text("Anonimo"),
-                  accountEmail: const Text("Anonimo"),
-                  currentAccountPicture:Image.asset("img/shop.png"),
+                  accountName: const Text("Usuario"),
+                  accountEmail: const Text("usuario@gmail.com"),
+                  currentAccountPicture:Image.asset("img/market.png"),
                 ),
+
                 ListTile(
                   title: const Text("Gestion Clientes"),
                   //leading: Image.asset("img/fondo.jpg"),
@@ -103,6 +110,17 @@ class _detalleNegociosState extends State<detalleNegocios> {
                   },
                 ),
                 ListTile(
+                  title: const Text("Filtrar Productos"),
+                  //leading: Image.asset("img/fondo.jpg"),
+                  leading: const Icon(Icons.business_center_outlined),
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FiltroPorProductos()),
+                    );
+                  },
+                ),
+                ListTile(
                   title: const Text("Comprar"),
                   //leading: Image.asset("img/fondo.jpg"),
                   leading: const Icon(Icons.add_shopping_cart),
@@ -118,15 +136,15 @@ class _detalleNegociosState extends State<detalleNegocios> {
           ),
         ),
         body: Container(
-          color: Colors.black12,
-          margin: EdgeInsets.all(10),
+          color: Colors.white54,
+          margin: EdgeInsets.all(20),
           padding: EdgeInsets.all(15),
           height: 400,
           //width: 350,
           child: Center(
             child: Card(
               elevation: 9,
-              shadowColor: Colors.cyanAccent,
+              shadowColor: Colors.brown.shade100,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20)
               ),

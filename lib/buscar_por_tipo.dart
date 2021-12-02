@@ -5,6 +5,7 @@ import 'package:marketplace/main.dart';
 import 'package:marketplace/registroClientes.dart';
 
 import 'buscar.dart';
+import 'filtrarProductos.dart';
 import 'filtroActividad.dart';
 import 'filtroProducto.dart';
 import 'negocios.dart';
@@ -22,8 +23,11 @@ class BuscarPorTipoState extends State<Buscar_por_tipo> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.brown.shade200,
         appBar: AppBar(
-          title: Text("Filtrar por datos"),
+          backgroundColor: Colors.brown.shade900,
+          title: Text("Market Place Filtrar por Actividad"),
+          centerTitle: true,
         ),
         drawer: Drawer(
           child: ListView(
@@ -32,12 +36,13 @@ class BuscarPorTipoState extends State<Buscar_por_tipo> {
                 UserAccountsDrawerHeader(
                   decoration: const BoxDecoration(
                     //color: Color.fromARGB(40, 200, 0, 0)
-                      gradient: LinearGradient(colors: [Colors.blueAccent, Colors.black38], begin: Alignment.topCenter, end: Alignment.bottomCenter)
+                      gradient: LinearGradient(colors: [Colors.brown, Colors.black38], begin: Alignment.topCenter, end: Alignment.bottomCenter)
                   ),
-                  accountName: const Text("Anonimo"),
-                  accountEmail: const Text("Anonimo"),
-                  currentAccountPicture:Image.asset("img/shop.png"),
+                  accountName: const Text("Usuario"),
+                  accountEmail: const Text("usuario@gmail.com"),
+                  currentAccountPicture:Image.asset("img/market.png"),
                 ),
+
                 ListTile(
                   title: const Text("Gestion Clientes"),
                   //leading: Image.asset("img/fondo.jpg"),
@@ -105,6 +110,17 @@ class BuscarPorTipoState extends State<Buscar_por_tipo> {
                   },
                 ),
                 ListTile(
+                  title: const Text("Filtrar Productos"),
+                  //leading: Image.asset("img/fondo.jpg"),
+                  leading: const Icon(Icons.business_center_outlined),
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FiltroPorProductos()),
+                    );
+                  },
+                ),
+                ListTile(
                   title: const Text("Comprar"),
                   //leading: Image.asset("img/fondo.jpg"),
                   leading: const Icon(Icons.add_shopping_cart),
@@ -121,7 +137,7 @@ class BuscarPorTipoState extends State<Buscar_por_tipo> {
         ),
         body: Center(
           child: SizedBox(
-            width: 350,
+            width: 380,
             child: Column(
               children: [
                 Container(
@@ -177,11 +193,11 @@ class BuscarServicios extends StatelessWidget {
             children: snapshot.data!.docs.map((DocumentSnapshot document){
               Map<String,dynamic> data=document.data()! as Map<String,dynamic>;
               return Container(
-                color: Colors.indigo,
+                color: Colors.brown.shade100,
                 margin: EdgeInsets.only(top:5),
                 child: ListTile(
-                  //title: Text(data['actividad']),
-                  subtitle: Text(data['nombre']),
+                  title: Text(data['nombre']),
+                  subtitle: Text(data['direccion']),
                 ),
               );
             }
