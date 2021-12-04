@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marketplace/negocios.dart';
 import 'package:marketplace/registroClientes.dart';
+import 'package:marketplace/ubicacion.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'buscar.dart';
@@ -131,12 +133,12 @@ class _detalleNegociosState extends State<detalleNegocios> {
                     // );
                   },
                 ),
-
               ]
           ),
         ),
+
         body: Container(
-          color: Colors.white54,
+          color: Colors.brown.shade100,
           margin: EdgeInsets.all(20),
           padding: EdgeInsets.all(15),
           height: 400,
@@ -149,12 +151,12 @@ class _detalleNegociosState extends State<detalleNegocios> {
                 borderRadius: BorderRadius.circular(20)
               ),
               //color: Colors.amberAccent,
-              color: Color.fromARGB(100, 100, 100, 100),
+              color: Color.fromARGB(50, 100, 100, 100),
               child: Center(
                 child: Column(
+                  mainAxisAlignment:MainAxisAlignment.center,
                   children: [
-                    //Image.asset("img/carro1.jpg"),
-                    Image.network(widget.negocio.imagen,width: 200,height: 200),
+                    Image.network(widget.negocio.imagen,width: 200,height: 150,),
                     Text("Categoria: "+widget.negocio.categoria),
                     Text("Dirección: "+widget.negocio.direccion),
                     Text("Celular: "+widget.negocio.celular),
@@ -165,7 +167,7 @@ class _detalleNegociosState extends State<detalleNegocios> {
                           label: const Text("Sitio web"),
                             icon: const Icon(Icons.web,
                             size: 20,
-                            color: Colors.grey,),
+                            color: Colors.white,),
                           onPressed: () async{
                             if(await canLaunch(widget.negocio.paginaWeb)){
                               await launch(widget.negocio.paginaWeb);
@@ -174,14 +176,15 @@ class _detalleNegociosState extends State<detalleNegocios> {
                         ),
                     ),
                     Container(
-                      padding: EdgeInsets.only(top: 5),
+                      //padding: EdgeInsets.only(top: 5),
                       alignment: Alignment.center,
                       child: ElevatedButton.icon(//onPressed: onPressed, icon: icon, label: label
                           label: const Text("Ubicación"),
                           icon: const Icon(Icons.map,
                             size: 20,
-                            color: Colors.grey,),
+                            color: Colors.white,),
                           onPressed: () async{
+
                             if(await canLaunch(widget.negocio.paginaWeb)){
                               await launch(widget.negocio.paginaWeb);
                             }
@@ -192,8 +195,11 @@ class _detalleNegociosState extends State<detalleNegocios> {
                 ),
               ),
             ),
+
           ),
+
         ),
+
       ),
     );
 

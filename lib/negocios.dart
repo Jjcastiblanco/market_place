@@ -1,8 +1,5 @@
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'dart:convert';
 import 'package:marketplace/detalle_neg.dart';
 import 'package:marketplace/registroClientes.dart';
 
@@ -157,16 +154,26 @@ class _ConsultasState extends State<Consultas> {
         if(snapshot.connectionState==ConnectionState.waiting){
           return Text("Conectando...");
         }
-        return ListView(
+        return GridView.count(
+            padding: EdgeInsets.only(top: 20,left: 20,right: 20),
+
+          crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+
           children: snapshot.data!.docs.map((DocumentSnapshot document){
             Map<String,dynamic> data=document.data()! as Map<String,dynamic>;
             return Container(
               color: Colors.brown.shade100,
-              margin: EdgeInsets.only(top:6, right: 15, left: 15),
               child: ListTile(
-                title: Text(data['nombre']),
-                subtitle: Text(data['direccion']),
-                leading: Image.network(data['imagen'],width: 100,height: 100),
+                contentPadding: EdgeInsets.all(22),
+                title: Image.network(data['imagen'],width: 100,height: 100),
+                subtitle:Text('\n'+data['nombre']+'\n'+data['direccion']+'\n'+data["telefono"],
+                  style:  TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  color: Colors.brown.shade900 ),),
+
                 onTap: (){
                   Negocios neg=Negocios(data["nombre"], data["celular"], data["direccion"], data["geolocalizacion"], data["imagen"], data["paginaWeb"], data["telefono"], data["categoria"], data["actividad"], data["codigo"]);
                   Navigator.push(context,
@@ -174,6 +181,7 @@ class _ConsultasState extends State<Consultas> {
                   );
                 },
               ),
+
             );
           }
           ).toList()

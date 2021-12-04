@@ -58,7 +58,17 @@ class _LoginState extends State<Login> {
             child: Image.asset('img/market.png'),
           ),
           Container(
-            padding: EdgeInsets.all(20),
+              padding: EdgeInsets.only(left:20,right: 20),
+              margin: EdgeInsets.only(top: 20, bottom: 5,left: 20,right: 20),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(40) ,
+                  color: Colors.brown.shade100,
+                  boxShadow: [BoxShadow (
+                    color: Colors.black,
+                    blurRadius: 10,
+                  ),
+                  ],
+              ),
             alignment: Alignment.center,
 
             child: TextField(
@@ -69,7 +79,17 @@ class _LoginState extends State<Login> {
             )
           ),
           Container(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.only(left:20,right: 20),
+              margin: EdgeInsets.only(top: 20, bottom: 5,left: 20,right: 20),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50) ,
+                  color: Colors.brown.shade100,
+                  boxShadow: [BoxShadow (
+                    color: Colors.black,
+                    blurRadius: 10,
+                  ),
+                  ],
+              ),
               alignment: Alignment.center,
 
               child: TextField(
@@ -81,6 +101,7 @@ class _LoginState extends State<Login> {
                 ),
               )
           ),
+
           Container(
 
               margin: EdgeInsets.only(top: 50),

@@ -143,6 +143,15 @@ class home_app extends StatelessWidget {
 
               child: Image.asset('img/market.png'),
             ),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  alignment: Alignment.center,
+                  height: 200,
+                  child: Text('Bienvenido(a) a Market Place, ingresa al menú lateral izquierdo y selecciona una opción',
+                    style: TextStyle(fontSize: 20) ,textAlign: TextAlign.center),
+                  color: Colors.brown.shade100,
+                  margin: EdgeInsets.all(50),
+                ),
           //   children: [
           //     Container(
           //         padding: EdgeInsets.all(5),
