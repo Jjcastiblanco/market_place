@@ -75,6 +75,7 @@ class _ReClienteState extends State<ReCliente> {
                 title: const Text("Gestion Clientes"),
                 //leading: Image.asset("img/fondo.jpg"),
                 leading: const Icon(Icons.supervised_user_circle),
+                selected: true,
                 onTap: (){
                   Navigator.push(
                     context,

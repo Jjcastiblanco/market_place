@@ -92,6 +92,7 @@ class _FiltroCategoriaState extends State<FiltroCategoria> {
                 ListTile(
                   title: const Text("Buscar Tipo Negocios"),
                   //leading: Image.asset("img/fondo.jpg"),
+                  selected: true,
                   leading: const Icon(Icons.business_center_outlined),
                   onTap: (){
                     Navigator.push(

@@ -140,8 +140,15 @@ class _detalleNegociosState extends State<detalleNegocios> {
         body: Container(
           color: Colors.brown.shade100,
           margin: EdgeInsets.all(20),
+          child: GestureDetector(
+          onTap: (){
+          //openwhatsapp();
+          },
+          child: Container(
+          color: Colors.black12,
+          margin: EdgeInsets.all(10),
           padding: EdgeInsets.all(15),
-          height: 400,
+          height: 450,
           //width: 350,
           child: Center(
             child: Card(
@@ -188,9 +195,28 @@ class _detalleNegociosState extends State<detalleNegocios> {
                             if(await canLaunch(widget.negocio.paginaWeb)){
                               await launch(widget.negocio.paginaWeb);
                             }
+                            // if(await canLaunch(widget.negocio.paginaWeb)){
+                            //   await launch(widget.negocio.paginaWeb);
+                            //}
                           }//_launchURL,
                       ),
                     ),
+                  Container(
+                  padding: EdgeInsets.only(top: 5),
+              alignment: Alignment.center,
+              child: ElevatedButton.icon(//onPressed: onPressed, icon: icon, label: label
+                  label: const Text("WhatsApp"),
+                  icon: const Icon(Icons.phonelink_sharp,
+                    size: 20,
+                    color: Colors.grey,),
+                  onPressed: () async{
+                    openwhatsapp(widget.negocio.celular);
+                    // if(await canLaunch(widget.negocio.paginaWeb)){
+                    //   await launch(widget.negocio.paginaWeb);
+                    //}
+                  }//_launchURL,
+              ),
+            ),
                   ],
                 ),
               ),
@@ -201,7 +227,31 @@ class _detalleNegociosState extends State<detalleNegocios> {
         ),
 
       ),
-    );
-
+    )
+            ));
+  }
+  openwhatsapp(String num) async{
+    //var whatsapp ="+57"+num;
+    var whatsapp ="+573124884776";
+    var Mensaje= "Hola, me gustaria saber sobre sus productos. \n Gracias";
+    var whatsappURl_android = "whatsapp://send?phone="+whatsapp+"&text="+Mensaje;
+    //var whatappURL_ios ="https://wa.me/$whatsapp?text=${Uri.parse("hello")}";
+    // if(Platform.isIOS){
+    //   // for iOS phone only
+    //   if( await canLaunch(whatappURL_ios)){
+    //     await launch(whatappURL_ios, forceSafariVC: false);
+    //   }else{
+    //     ScaffoldMessenger.of(context).showSnackBar(
+    //         SnackBar(content: new Text("whatsapp no installed")));
+    //   }
+    // }else{
+      // android , web
+      if( await canLaunch(whatsappURl_android)){
+        await launch(whatsappURl_android);
+      }else{
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: new Text("whatsapp no installed")));
+      // }
+    }
   }
 }
