@@ -162,15 +162,28 @@ class _FiltroPState extends State<FiltroP> {
         if(snapshot.connectionState==ConnectionState.waiting){
           return Text("Conectando...");
         }
-        return ListView(
+        return GridView.count(
+            padding: EdgeInsets.only(top: 20,left: 20,right: 20),
+
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+
             children: snapshot.data!.docs.map((DocumentSnapshot document){
               Map<String,dynamic> data=document.data()! as Map<String,dynamic>;
               return Container(
                 color: Colors.brown.shade100,
-                margin: EdgeInsets.only(top:6, right: 15, left: 15),
+
                 child: ListTile(
-                  title: Text(data['nombre']),
-                  subtitle: Text(data['precio']),
+
+                  contentPadding: EdgeInsets.all(22),
+                  title: Image.network(data['imagen'],width: 100,height: 100),
+                  subtitle:Text('\n'+data['nombre']+'\n \$'+data['precio']+'\n'+data['categoria'],
+                    style:  TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.brown.shade900 ),),
+
                 ),
               );
             }

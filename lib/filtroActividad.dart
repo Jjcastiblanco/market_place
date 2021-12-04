@@ -6,6 +6,7 @@ import 'package:marketplace/registroClientes.dart';
 
 import 'buscar.dart';
 import 'buscar_por_tipo.dart';
+import 'detalle_neg.dart';
 import 'filtroProducto.dart';
 import 'negocios.dart';
 
@@ -141,14 +142,28 @@ class _FiltroCategoriaState extends State<FiltroCategoria> {
           child: SizedBox(width: 400,child: Column(
             children: [
               Container(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.only(left:20, right: 20),
+                margin: EdgeInsets.only(top: 20, bottom: 20),
+                decoration: BoxDecoration(
+
+                    borderRadius: BorderRadius.circular(50) ,
+                    color: Colors.brown.shade100,
+                    boxShadow: [BoxShadow (
+
+                      color: Colors.black,
+                      blurRadius: 10,
+                    ),
+                    ],
+                ),
                 child: TextField(
+
                   controller:filtrar,
                   onChanged: (value){
                     setState(() {});
                   },
                   decoration: InputDecoration(
-                      hintText: "Ingrese dato a buscar"
+                      hintText: "Ingrese datox a buscar"
+
                   ),
                 ),
               ),
@@ -188,17 +203,35 @@ class DatoFiltro extends StatelessWidget{
           if(!snapshot.hasData){
             return Center(child:CircularProgressIndicator());
           }
-          return ListView(
+          return GridView.count(
+              padding: EdgeInsets.only(top: 20,left: 20,right: 20),
+
+              crossAxisCount: 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+
+
               children: snapshot.data!.docs.map((DocumentSnapshot document){
                 Map<String,dynamic> data=document.data()! as Map<String,dynamic>;
                 return Container(
                   color: Colors.brown.shade100,
-                  margin: EdgeInsets.only(top:6),
                   child: ListTile(
-                    title: Text(data['nombre']),
-                    subtitle: Text(data['direccion']),
-                    leading: Image.network(data['imagen'],width: 100,height: 100),
+                    contentPadding: EdgeInsets.all(22),
+                    title: Image.network(data['imagen'],width: 100,height: 50),
+                    subtitle:Text('\n'+data['nombre']+'\n'+data['direccion']+'\n'+data["telefono"],
+                      style:  TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.brown.shade900 ),),
+
+                    onTap: (){
+                      Negocios neg=Negocios(data["nombre"], data["celular"], data["direccion"], data["geolocalizacion"], data["imagen"], data["paginaWeb"], data["telefono"], data["categoria"], data["actividad"], data["codigo"]);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context)=> detalleNegocios(negocio: neg))
+                      );
+                    },
                   ),
+
                 );
               }
               ).toList()

@@ -171,7 +171,7 @@ class _ReClienteState extends State<ReCliente> {
 
           // 1 container solo la imagen
           Container(
-            height: 150,
+            height: 200,
             padding: const EdgeInsets.only(top: 40,bottom: 0),
             alignment: Alignment.topCenter,
             child: Image.asset('img/shop.png'),
@@ -179,8 +179,22 @@ class _ReClienteState extends State<ReCliente> {
           ),
 
           Container(
-            padding: const EdgeInsets.only(right: 50,left: 50, top: 40),
-            alignment: Alignment.center,
+            width: 250,
+            padding: EdgeInsets.only(left:20, right: 20),
+            margin: EdgeInsets.only(top: 20, bottom: 5,left:20, right: 20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50) ,
+              color: Colors.brown.shade100,
+              boxShadow: [BoxShadow (
+                color: Colors.black,
+                blurRadius: 10,
+              ),
+              ],
+            ),
+
+
+            //padding: const EdgeInsets.only(right: 50,left: 50, top: 40),
+            //alignment: Alignment.center,
             child: TextField(
               controller: codigo,
               decoration: const InputDecoration(
@@ -189,8 +203,19 @@ class _ReClienteState extends State<ReCliente> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.only(right: 50,left: 50, top: 10),
-            alignment: Alignment.center,
+            width: 250,
+            padding: EdgeInsets.only(left:20, right: 20),
+            margin: EdgeInsets.only(top: 5, bottom: 5,left:20, right: 20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50) ,
+              color: Colors.brown.shade100,
+              boxShadow: [BoxShadow (
+                color: Colors.black,
+                blurRadius: 10,
+              ),
+              ],
+            ),
+
             child: TextField(
               controller: nombre,
               decoration: const InputDecoration(
@@ -199,8 +224,19 @@ class _ReClienteState extends State<ReCliente> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.only(right: 50,left: 50, top: 10),
-            alignment: Alignment.center,
+            width: 250,
+            padding: EdgeInsets.only(left:20, right: 20),
+            margin: EdgeInsets.only(top: 5, bottom: 5,left:20, right: 20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50) ,
+              color: Colors.brown.shade100,
+              boxShadow: [BoxShadow (
+                color: Colors.black,
+                blurRadius: 10,
+              ),
+              ],
+            ),
+
             child: TextField(
               controller: celular,
               decoration: const InputDecoration(
@@ -209,8 +245,19 @@ class _ReClienteState extends State<ReCliente> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.only(right: 50,left: 50, top: 10),
-            alignment: Alignment.center,
+            width: 250,
+            padding: EdgeInsets.only(left:20, right: 20),
+            margin: EdgeInsets.only(top: 5, bottom: 5,left:20, right: 20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50) ,
+              color: Colors.brown.shade100,
+              boxShadow: [BoxShadow (
+                color: Colors.black,
+                blurRadius: 10,
+              ),
+              ],
+            ),
+
             child: TextField(
               controller: telefono,
               decoration: const InputDecoration(
@@ -219,8 +266,19 @@ class _ReClienteState extends State<ReCliente> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.only(right: 50,left: 50, top: 10,bottom: 30),
-            alignment: Alignment.center,
+            width: 250,
+            padding: EdgeInsets.only(left:20, right: 20),
+            margin: EdgeInsets.only(top: 5, bottom: 20,left:20, right: 20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50) ,
+              color: Colors.brown.shade100,
+              boxShadow: [BoxShadow (
+                color: Colors.black,
+                blurRadius: 10,
+              ),
+              ],
+            ),
+
             child: TextField(
               controller: direccion,
               decoration: const InputDecoration(

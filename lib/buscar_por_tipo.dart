@@ -1,10 +1,10 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:marketplace/main.dart';
 import 'package:marketplace/registroClientes.dart';
 
 import 'buscar.dart';
+import 'detalle_neg.dart';
 import 'filtrarProductos.dart';
 import 'filtroActividad.dart';
 import 'filtroProducto.dart';
@@ -22,6 +22,7 @@ class BuscarPorTipoState extends State<Buscar_por_tipo> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.brown.shade200,
         appBar: AppBar(
@@ -141,19 +142,32 @@ class BuscarPorTipoState extends State<Buscar_por_tipo> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.only(left:20, right: 20),
+                  margin: EdgeInsets.only(top: 20, bottom: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50) ,
+                    color: Colors.brown.shade100,
+                    boxShadow: [BoxShadow (
+                    color: Colors.black,
+                      blurRadius: 10,
+                    ),
+                      ]
+
+                  ),
+
                   child: TextField(
                     controller: buscar,
                     onChanged: (value){
                       setState(() {
-
                       });
                     },
                     decoration: InputDecoration(
-                      hintText: "Digite el dato a buscar"
+                      hintText: "Ingrese el dato a buscar"
+
                     ),
                   ),
                 ),
+
                 Expanded(
                   child:BuscarServicios(
                   text: buscar.text,
@@ -189,16 +203,34 @@ class BuscarServicios extends StatelessWidget {
             child: CircularProgressIndicator(),
           );
         }
-        return ListView(
+        return GridView.count(
+            padding: EdgeInsets.only(top: 20,left: 20,right: 20),
+
+        crossAxisCount: 2,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+
             children: snapshot.data!.docs.map((DocumentSnapshot document){
               Map<String,dynamic> data=document.data()! as Map<String,dynamic>;
               return Container(
                 color: Colors.brown.shade100,
-                margin: EdgeInsets.only(top:5),
                 child: ListTile(
-                  title: Text(data['nombre']),
-                  subtitle: Text(data['direccion']),
+                  contentPadding: EdgeInsets.all(22),
+                  title: Image.network(data['imagen'],width: 100,height: 50),
+                  subtitle:Text('\n'+data['nombre']+'\n'+data['direccion']+'\n'+data["telefono"],
+                    style:  TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.brown.shade900 ),),
+
+                  onTap: (){
+                    Negocios neg=Negocios(data["nombre"], data["celular"], data["direccion"], data["geolocalizacion"], data["imagen"], data["paginaWeb"], data["telefono"], data["categoria"], data["actividad"], data["codigo"]);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context)=> detalleNegocios(negocio: neg))
+                    );
+                  },
                 ),
+
               );
             }
             ).toList()

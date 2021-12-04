@@ -141,7 +141,18 @@ class _BuscarState extends State<Buscar> {
           child: SizedBox(width: 400,child: Column(
             children: [
               Container(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.only(left:20, right: 20),
+                margin: EdgeInsets.only(top: 20, bottom: 20),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50) ,
+                    color: Colors.brown.shade100,
+                    boxShadow: [BoxShadow (
+                      color: Colors.black,
+                      blurRadius: 10,
+                    ),
+                    ],
+                ),
+
                 child: TextField(
 
                   controller:buscar,
@@ -200,7 +211,8 @@ class DatoFiltro extends StatelessWidget{
                   padding: EdgeInsets.all(10),
                   child: ListTile(
                     title: Text(data['nombre']),
-                    subtitle: Text(data['direccion']),
+                    subtitle: Text(data['direccion']+'\n'+data['categoria']),
+                    leading: Image.network(data['imagen'],width: 100,height: 50),
                   ),
                 );
               }
