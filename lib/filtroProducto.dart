@@ -67,6 +67,7 @@ class FiltroProducto extends StatelessWidget {
                     title: const Text("Listado Productos"),
                     //leading: Image.asset("img/fondo.jpg"),
                     leading: const Icon(Icons.assignment_outlined),
+                    selected: true,
                     onTap: (){
                       Navigator.push(
                         context,

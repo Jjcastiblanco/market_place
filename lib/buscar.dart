@@ -81,6 +81,7 @@ class _BuscarState extends State<Buscar> {
                 ListTile(
                   title: const Text("Buscar Negocios"),
                   //leading: Image.asset("img/fondo.jpg"),
+                  selected: true,
                   leading: const Icon(Icons.business_center_outlined),
                   onTap: (){
                     Navigator.push(

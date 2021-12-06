@@ -102,6 +102,7 @@ class BuscarPorTipoState extends State<Buscar_por_tipo> {
                 ListTile(
                   title: const Text("Buscar Negocios Actividad"),
                   //leading: Image.asset("img/fondo.jpg"),
+                  selected: true,
                   leading: const Icon(Icons.business_center_outlined),
                   onTap: (){
                     Navigator.push(
